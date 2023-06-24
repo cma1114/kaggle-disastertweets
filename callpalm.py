@@ -11,7 +11,7 @@ from datasets import Dataset
 import google.generativeai as palm
 import google.ai.generativelanguage as safety_types
 
-palm.configure(api_key=palm_api_key)
+palm.configure(api_key=PALM_API_KEY)
 models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
 model = models[0].name #models/text-bison-001
 print(model)
