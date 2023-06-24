@@ -1,4 +1,4 @@
-palm_api_key='AIzaSyDCQw8kf2EE0u-IzPYkJDzQROtYnoQuVjc'
+
 import time
 import os
 import csv
