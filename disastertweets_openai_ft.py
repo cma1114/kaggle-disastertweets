@@ -1,3 +1,4 @@
+from config import OPENAI_API_KEY
 import os
 import pandas as pd
 #from sklearn.model_selection import train_test_split
@@ -38,7 +39,6 @@ test_df[['prompt']].to_csv("/Users/christopherackerman/input/test_openai_cln.csv
 """
 #on command line:
 #https://platform.openai.com/docs/guides/fine-tuning
-export OPENAI_API_KEY="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"
 openai tools fine_tunes.prepare_data -f /Users/christopherackerman/input/train_openai_cln.csv
 #After you’ve fine-tuned a model, remember that your prompt has to end with the indicator string ` ->` for the model to start generating completions, rather than continuing with the prompt. Make sure to include `stop=["eal disaster"]` so that the generated texts ends at the expected place.
 openai api fine_tunes.create -t "./input/train_openai_cln_prepared.jsonl" -m curie
@@ -51,9 +51,9 @@ openai api fine_tunes.create -t "./input/train_openai_cln_prepared.jsonl" -m cur
 #openai api completions.create -m curie:ft-personal-2023-06-03-17-33-01 -p <YOUR_PROMPT>
 """
 
-os.environ["OPENAI_API_KEY"] = "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"
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
+#openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
 model_name="curie:ft-personal-2023-06-20-03-24-52"
 #suffix = " ->"
 stopmarker = "eal disaster"

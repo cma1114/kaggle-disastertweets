@@ -1,4 +1,4 @@
-
+from config import PALM_API_KEY
 import time
 import os
 import csv
