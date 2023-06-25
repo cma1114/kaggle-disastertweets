@@ -4,15 +4,15 @@ import numpy as np
 from datasets import Dataset, DatasetDict, load_dataset
 import openai
 from tenacity import retry, stop_after_attempt, wait_random_exponential
+from config import OPENAI_API_KEY, HOME_DIR
 
-os.environ["OPENAI_API_KEY"] = "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"
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
 
 def load_data(sep="[SEP]", aug=True, dset='train'):
     if dset=='train':
-        df = pd.read_csv("/Users/christopherackerman/input/train_cln.csv")
+        df = pd.read_csv(HOME_DIR+"/input/train_cln.csv")
     else:
-        df = pd.read_csv("/Users/christopherackerman/input/test.csv")
+        df = pd.read_csv(HOME_DIR+"/input/test.csv")
     #add keyword and location
     if aug:
         df['keyword'] = df['keyword'].fillna('unknown')
